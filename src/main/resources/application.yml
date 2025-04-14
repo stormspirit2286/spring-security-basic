@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: spring-security-basic
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_security_basic
+    username: root
+    password: 123456789
+  jpa:
+    hibernate:
+      ddl-auto: update
+app:
+  jwt:
+    secret: 6max0CGmri8FXzhi+ZFCsCP8EjBRfrQvANDGqSomqB0=
+    access-token-expiration-ms: 900000
+    refresh-token-expiration-ms: 604800000
