@@ -13,6 +13,7 @@ import vn.duynv.springsecuritybasic.service.UserService;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -51,8 +52,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserResponseDTO> getUsers() {
+        List<User> users = userRepository.findAll();
+        return users.stream().map(this::mapUserToDTO).collect(Collectors.toList());
+    }
+
+    @Override
     public UserResponseDTO getUserById(Long id) {
         return null;
+    }
+
+    @Override
+    public User getUserByUsername(String username) {
+        return userRepository.findByUsername(username).orElseThrow(
+                () -> new RuntimeException("not found user with username: " + username)
+        );
     }
 
     @Override
